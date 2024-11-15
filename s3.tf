@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "nops_cur_bucket" {
-  bucket        = var.cur_bucket_name
-  force_destroy = true
+  bucket = var.cur_bucket_name
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "nops_cur_bucket_encryption" {
