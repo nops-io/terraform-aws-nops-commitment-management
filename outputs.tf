@@ -17,18 +17,3 @@ output "nops_sharesave_payer_role_arn" {
   description = "The ARN of the Sharesave Payer role"
   value       = local.is_master_account ? aws_iam_role.nops_share_save_payer_role[0].arn : ""
 }
-
-output "nops_sharesave_mgt_role_arn" {
-  description = "The ARN of the Sharesave Management role"
-  value       = aws_iam_role.nops_share_save_mgt_role.arn
-}
-
-output "nops_sharesave_ri_role_arn" {
-  description = "The ARN of the Sharesave RI role"
-  value       = aws_iam_role.nops_share_save_ri_role.arn
-}
-
-output "nops_sharesave_payer_role_arn" {
-  description = "The ARN of the Sharesave Payer role"
-  value       = aws_iam_role.nops_share_save_payer_role.arn
-}
