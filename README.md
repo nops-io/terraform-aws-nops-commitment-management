@@ -6,7 +6,7 @@ Terraform module for commitment management integration with AWS using the nOps p
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
 | <a name="requirement_http"></a> [http](#requirement\_http) | ~> 3.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.3 |
@@ -26,7 +26,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_cur_report_definition.example_cur_report_definition](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cur_report_definition) | resource |
+| [aws_cur_report_definition.nops_cur](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cur_report_definition) | resource |
 | [aws_iam_role.nops_share_save_mgt_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.nops_share_save_payer_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.nops_share_save_ri_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -40,18 +40,24 @@ No modules.
 | [aws_s3_bucket_policy.nops_cur_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.nops_cur_bucket_block_public_access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_server_side_encryption_configuration.nops_cur_bucket_encryption](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_organizations_organization.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 | [aws_partition.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/partition) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cur_bucket_name"></a> [cur\_bucket\_name](#input\_cur\_bucket\_name) | The S3 bucket name to be used to setup CUR integration. This name has to be unique globally. | `string` | n/a | yes |
-| <a name="input_cur_report_name"></a> [cur\_report\_name](#input\_cur\_report\_name) | Name of the CUR report. | `string` | n/a | yes |
+| <a name="input_cur_bucket_name"></a> [cur\_bucket\_name](#input\_cur\_bucket\_name) | The S3 bucket name to be used to setup CUR integration. This name has to be unique globally. | `string` | `""` | no |
+| <a name="input_cur_report_name"></a> [cur\_report\_name](#input\_cur\_report\_name) | Name of the CUR report. | `string` | `""` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output_cur_bucket_arn"></a> [cur\_bucket\_arn](#output\_cur\_bucket\_arn) | The ARN of the CUR S3 bucket |
+| <a name="output_nops_sharesave_mgt_role_arn"></a> [nops\_sharesave\_mgt\_role\_arn](#output\_nops\_sharesave\_mgt\_role\_arn) | The ARN of the Sharesave Management role |
+| <a name="output_nops_sharesave_payer_role_arn"></a> [nops\_sharesave\_payer\_role\_arn](#output\_nops\_sharesave\_payer\_role\_arn) | The ARN of the Sharesave Payer role |
+| <a name="output_nops_sharesave_ri_role_arn"></a> [nops\_sharesave\_ri\_role\_arn](#output\_nops\_sharesave\_ri\_role\_arn) | The ARN of the Sharesave RI role |
 <!-- END_TF_DOCS -->
