@@ -1,5 +1,6 @@
 resource "aws_iam_role" "nops_share_save_mgt_role" {
-  name = "NopsSharesaveMgt"
+  count = !local.is_master_account ? 1 : 0
+  name  = "NopsSharesaveMgt"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -16,10 +17,11 @@ resource "aws_iam_role" "nops_share_save_mgt_role" {
 }
 
 resource "aws_iam_role_policy_attachments_exclusive" "nops_share_save_mgt_managed_policies" {
-  role_name = aws_iam_role.nops_share_save_mgt_role.name
+  count     = !local.is_master_account ? 1 : 0
+  role_name = aws_iam_role.nops_share_save_mgt_role[0].name
   policy_arns = [
-    "arn:aws:iam::aws:policy/AWSSupportAccess",             # Verify
-    "arn:aws:iam::aws:policy/AWSCloudTrail_ReadOnlyAccess", # Verify
+    "arn:aws:iam::aws:policy/AWSSupportAccess",
+    "arn:aws:iam::aws:policy/AWSCloudTrail_ReadOnlyAccess",
     "arn:aws:iam::aws:policy/AWSOrganizationsReadOnlyAccess",
     "arn:aws:iam::aws:policy/AmazonEC2FullAccess",
     "arn:aws:iam::aws:policy/AWSSavingsPlansFullAccess",
@@ -28,8 +30,9 @@ resource "aws_iam_role_policy_attachments_exclusive" "nops_share_save_mgt_manage
 }
 
 resource "aws_iam_role_policy" "nops_sharesave_mgt_policy" {
-  name = "NopsSharesaveMgtPolicy"
-  role = aws_iam_role.nops_share_save_mgt_role.id
+  count = !local.is_master_account ? 1 : 0
+  name  = "NopsSharesaveMgtPolicy"
+  role  = aws_iam_role.nops_share_save_mgt_role[0].id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -58,7 +61,8 @@ resource "aws_iam_role_policy" "nops_sharesave_mgt_policy" {
 }
 
 resource "aws_iam_role" "nops_share_save_ri_role" {
-  name = "NopsSharesaveRI"
+  count = !local.is_master_account ? 1 : 0
+  name  = "NopsSharesaveRI"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -75,15 +79,17 @@ resource "aws_iam_role" "nops_share_save_ri_role" {
 }
 
 resource "aws_iam_role_policy_attachments_exclusive" "nops_share_save_ri_managed_policies" {
-  role_name = aws_iam_role.nops_share_save_ri_role.name
+  count     = !local.is_master_account ? 1 : 0
+  role_name = aws_iam_role.nops_share_save_ri_role[0].name
   policy_arns = [
     "arn:aws:iam::aws:policy/AWSSavingsPlansFullAccess"
   ]
 }
 
 resource "aws_iam_role_policy" "nops_sharesave_ri_policy" {
-  name = "NopsSharesaveRIPolicy"
-  role = aws_iam_role.nops_share_save_ri_role.id
+  count = !local.is_master_account ? 1 : 0
+  name  = "NopsSharesaveRIPolicy"
+  role  = aws_iam_role.nops_share_save_ri_role[0].id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -112,7 +118,8 @@ resource "aws_iam_role_policy" "nops_sharesave_ri_policy" {
 }
 
 resource "aws_iam_role" "nops_share_save_payer_role" {
-  name = "NopsSharesavePayer"
+  count = local.is_master_account ? 1 : 0
+  name  = "NopsSharesavePayer"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -129,15 +136,17 @@ resource "aws_iam_role" "nops_share_save_payer_role" {
 }
 
 resource "aws_iam_role_policy_attachments_exclusive" "nops_share_save_payer_managed_policies" {
-  role_name = aws_iam_role.nops_share_save_payer_role.name
+  count     = local.is_master_account ? 1 : 0
+  role_name = aws_iam_role.nops_share_save_payer_role[0].name
   policy_arns = [
     "arn:aws:iam::aws:policy/AWSSupportAccess"
   ]
 }
 
 resource "aws_iam_role_policy" "nops_sharesave_policy" {
-  name = "NopsSharesavePayerPolicy"
-  role = aws_iam_role.nops_share_save_payer_role.id
+  count = local.is_master_account ? 1 : 0
+  name  = "NopsSharesavePayerPolicy"
+  role  = aws_iam_role.nops_share_save_payer_role[0].id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -148,7 +157,7 @@ resource "aws_iam_role_policy" "nops_sharesave_policy" {
           "s3:ListBucket"
         ]
         Resource = [
-          "arn:${data.aws_partition.current.id}:s3:::${aws_s3_bucket.nops_cur_bucket.id}"
+          "arn:${data.aws_partition.current.id}:s3:::${aws_s3_bucket.nops_cur_bucket[0].id}"
         ]
       },
       {
@@ -159,7 +168,7 @@ resource "aws_iam_role_policy" "nops_sharesave_policy" {
           "s3:DeleteObject"
         ]
         Resource = [
-          "arn:${data.aws_partition.current.id}:s3:::${aws_s3_bucket.nops_cur_bucket.id}/*"
+          "arn:${data.aws_partition.current.id}:s3:::${aws_s3_bucket.nops_cur_bucket[0].id}/*"
         ]
       }
     ]
