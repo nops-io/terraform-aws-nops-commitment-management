@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1](https://github.com/nops-io/terraform-aws-nops-commitment-management/compare/v1.0.0...v1.0.1) (2024-11-22)
+
+
+### Bug Fixes
+
+* Removing unnecessary dependencies ([#5](https://github.com/nops-io/terraform-aws-nops-commitment-management/issues/5)) ([03768a6](https://github.com/nops-io/terraform-aws-nops-commitment-management/commit/03768a605d8c34213239fda8a9f039ca850bf91d))
+
 ## 1.0.0 (2024-11-21)
 
 
