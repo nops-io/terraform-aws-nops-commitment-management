@@ -1,6 +1,74 @@
 # terraform-aws-nops-commitment-management
 Terraform module for commitment management integration with AWS using the nOps platform
 
+## Features
+- Creation of an S3 bucket and CUR report
+- Creation IAM roles with the necessary permissions required by the nOps platform
+- Automatic detection of payer and child accounts for correct creation of only necessary resources
+
+## Prerequisites
+
+- Terraform v1.2+
+- AWS CLI configured with appropriate permissions
+
+## Usage
+
+### Onboarding Payer account
+
+The below example shows how to add the management (root) AWS account integration:
+
+
+1. Being authenticated on the Payer account of the AWS organization, add the following code:
+```hcl
+provider "aws" {
+  alias  = "root"
+}
+
+module cm_onboarding {
+  providers = {
+    aws = aws.root
+  }
+  source             = "nops-io/nops-commitment-management/aws"
+  # Make sure the bucket name is unique globally, this is a requisite by AWS
+  cur_bucket_name = "my_cur_bucket"
+  # CUR report display name
+  cur_report_name = "my_cur_report"
+}
+```
+
+2. Initialize Terraform:
+
+```
+terraform init
+```
+
+3. Plan and apply the Terraform configuration:
+
+```
+terraform plan -out=plan
+
+terraform apply plan
+```
+
+
+### Onboarding child account
+
+Onboarding child accounts is performed using the same module, it already contains the logic to react when its being applied on any account that is not root
+```hcl
+provider "aws" {
+  alias  = "child"
+}
+
+module cm_onboarding {
+  providers = {
+    aws = aws.child
+  }
+  source             = "nops-io/nops-commitment-management/aws"
+  # No variables are required to deploy this module on child accounts
+}
+
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
