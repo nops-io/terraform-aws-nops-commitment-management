@@ -17,6 +17,8 @@ Terraform module for commitment management integration with AWS using the nOps p
 
 The below example shows how to add the management (root) AWS account integration:
 
+> The CUR report name and bucket name are only required to deploy the module to the Payer account.
+
 
 1. Being authenticated on the Payer account of the AWS organization, add the following code:
 ```hcl
@@ -76,9 +78,6 @@ module cm_onboarding {
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
-| <a name="requirement_http"></a> [http](#requirement\_http) | ~> 3.0 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.3 |
-| <a name="requirement_time"></a> [time](#requirement\_time) | ~> 0.7 |
 
 ## Providers
 
