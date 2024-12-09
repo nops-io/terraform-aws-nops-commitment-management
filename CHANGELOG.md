@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2](https://github.com/nops-io/terraform-aws-nops-commitment-management/compare/v1.0.1...v1.0.2) (2024-12-09)
+
+
+### Bug Fixes
+
+* Changing share save rolenames to follow cf ([#6](https://github.com/nops-io/terraform-aws-nops-commitment-management/issues/6)) ([08b9455](https://github.com/nops-io/terraform-aws-nops-commitment-management/commit/08b9455c91492838e9c3f3508098fbaac1e444df))
+
 ## [1.0.1](https://github.com/nops-io/terraform-aws-nops-commitment-management/compare/v1.0.0...v1.0.1) (2024-11-22)
 
 
