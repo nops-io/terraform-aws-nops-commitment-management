@@ -1,6 +1,6 @@
 resource "aws_iam_role" "nops_share_save_mgt_role" {
   count = !local.is_master_account ? 1 : 0
-  name  = "NopsSharesaveMgt"
+  name  = "nops-sharesave-mgt"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -62,7 +62,7 @@ resource "aws_iam_role_policy" "nops_sharesave_mgt_policy" {
 
 resource "aws_iam_role" "nops_share_save_ri_role" {
   count = !local.is_master_account ? 1 : 0
-  name  = "NopsSharesaveRI"
+  name  = "nops-sharesave-ri"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -119,7 +119,7 @@ resource "aws_iam_role_policy" "nops_sharesave_ri_policy" {
 
 resource "aws_iam_role" "nops_share_save_payer_role" {
   count = local.is_master_account ? 1 : 0
-  name  = "NopsSharesavePayer"
+  name  = "nops-sharesave-payer"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
