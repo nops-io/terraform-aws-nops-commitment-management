@@ -44,6 +44,7 @@ module cm_onboarding {
 terraform init
 ```
 
+
 3. Plan and apply the Terraform configuration:
 
 ```
