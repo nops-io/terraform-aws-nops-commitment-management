@@ -120,7 +120,7 @@ No modules.
 | <a name="input_cur_report_name"></a> [cur\_report\_name](#input\_cur\_report\_name) | Name of the CUR report. | `string` | `""` | no |
 
 ## Outputs
-
+ 
 | Name | Description |
 |------|-------------|
 | <a name="output_cur_bucket_arn"></a> [cur\_bucket\_arn](#output\_cur\_bucket\_arn) | The ARN of the CUR S3 bucket |
