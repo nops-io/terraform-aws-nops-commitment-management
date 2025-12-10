@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0](https://github.com/nops-io/terraform-aws-nops-commitment-management/compare/v1.0.3...v1.1.0) (2025-12-10)
+
+
+### Features
+
+* Update IAM policies to include additional permissions for AWS services ([7f8f3d2](https://github.com/nops-io/terraform-aws-nops-commitment-management/commit/7f8f3d2310bf57a8eb25c874dd59b33877b0a8a7))
+
+
+### Bug Fixes
+
+* License ([#10](https://github.com/nops-io/terraform-aws-nops-commitment-management/issues/10)) ([838f330](https://github.com/nops-io/terraform-aws-nops-commitment-management/commit/838f330896dde4c43c5636a5dff2ed92f273e251))
+
 ## [1.0.3](https://github.com/nops-io/terraform-aws-nops-commitment-management/compare/v1.0.2...v1.0.3) (2024-12-16)
 
 
