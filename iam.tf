@@ -52,7 +52,29 @@ resource "aws_iam_role_policy" "nops_sharesave_mgt_policy" {
           "ec2:AcceptReservedInstancesExchangeQuote",
           "rds:PurchaseReservedDBInstancesOffering",
           "rds:DescribeReservedDBInstancesOfferings",
-          "rds:DescribeReservedDBInstances"
+          "rds:DescribeReservedDBInstances",
+          "redshift:PurchaseReservedNodeOffering",
+          "elasticache:PurchaseReservedCacheNodesOffering",
+          "memorydb:PurchaseReservedNodesOffering",
+          "redshift:AcceptReservedNodeExchange",
+          "redshift:Describe*",
+          "redshift:GetReservedNodeExchangeOfferings",
+          "es:PurchaseReservedElasticsearchInstanceOffering",
+          "elasticache:DescribeReservedCacheNodesOfferings",
+          "elasticache:DescribeReservedCacheNodes",
+          "es:DescribeReservedElasticsearchInstanceOfferings",
+          "es:DescribeReservedElasticsearchInstances",
+          "cloudfront:CreateSavingsPlan",
+          "cloudfront:GetSavingsPlan",
+          "cloudfront:ListRateCards",
+          "cloudfront:ListSavingsPlans",
+          "cloudfront:UpdateSavingsPlan",
+          "ce:*",
+          "dynamodb:DescribeReservedCapacityOfferings",
+          "dynamodb:TagResource",
+          "dynamodb:DescribeReservedCapacity",
+          "dynamodb:PurchaseReservedCapacityOfferings",
+          "savingsplans:ReturnSavingsPlan"
         ]
         Resource = "*"
       }
@@ -109,7 +131,29 @@ resource "aws_iam_role_policy" "nops_sharesave_ri_policy" {
           "ec2:AcceptReservedInstancesExchangeQuote",
           "rds:PurchaseReservedDBInstancesOffering",
           "rds:DescribeReservedDBInstancesOfferings",
-          "rds:DescribeReservedDBInstances"
+          "rds:DescribeReservedDBInstances",
+          "redshift:PurchaseReservedNodeOffering",
+          "elasticache:PurchaseReservedCacheNodesOffering",
+          "memorydb:PurchaseReservedNodesOffering",
+          "redshift:AcceptReservedNodeExchange",
+          "redshift:Describe*",
+          "redshift:GetReservedNodeExchangeOfferings",
+          "es:PurchaseReservedElasticsearchInstanceOffering",
+          "elasticache:DescribeReservedCacheNodesOfferings",
+          "elasticache:DescribeReservedCacheNodes",
+          "es:DescribeReservedElasticsearchInstanceOfferings",
+          "es:DescribeReservedElasticsearchInstances",
+          "cloudfront:CreateSavingsPlan",
+          "cloudfront:GetSavingsPlan",
+          "cloudfront:ListRateCards",
+          "cloudfront:ListSavingsPlans",
+          "cloudfront:UpdateSavingsPlan",
+          "ce:*",
+          "dynamodb:DescribeReservedCapacityOfferings",
+          "dynamodb:TagResource",
+          "dynamodb:DescribeReservedCapacity",
+          "dynamodb:PurchaseReservedCapacityOfferings",
+          "savingsplans:ReturnSavingsPlan"
         ]
         Resource = "*"
       }
